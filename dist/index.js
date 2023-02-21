@@ -9807,10 +9807,8 @@ const compareBranches = (branch1, branch2) => {
     return (branch2Date > branch1Date) ? -1 : 1;
 }
 const run = async () => {
-    console.log('Starting');
     const currentBranch = core.getInput('current_branch');
-    console.log('Current Branch', currentBranch);
-    console.log('Repo', github.context.repo.repo);
+    console.log('Current branch:', currentBranch);
     const githubToken = core.getInput('github_token');
     const octokit = github.getOctokit(githubToken);
     const allBranches = (await octokit.rest.repos.listBranches(github.context.repo)).data
@@ -9820,7 +9818,7 @@ const run = async () => {
     console.log('allBranches', allBranches);
     const currentIndex = allBranches.findIndex((name) => name === currentBranch);
     const targetBranch = allBranches[currentIndex + 1];
-    console.log('targetBranch', targetBranch);
+    console.log('Target branch:', targetBranch);
     if (targetBranch) {
         core.setOutput('target_branch', targetBranch);
     }
