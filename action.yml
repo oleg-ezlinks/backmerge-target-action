@@ -1,0 +1,16 @@
+name: 'Back-merge Target'
+description: 'Get a target branch for the back-merge'
+inputs:
+  github_token:
+    description: 'GitHub token'
+    required: true
+  current_branch:
+    description: 'Current Branch'
+    required: true
+    default: 'master'
+outputs:
+  target_branch:
+    description: 'Target Branch'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
