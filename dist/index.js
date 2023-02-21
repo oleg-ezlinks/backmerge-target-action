@@ -9781,13 +9781,10 @@ const run = async () => {
     console.log('Starting');
     const currentBranch = core.getInput('current_branch');
     console.log('Current Branch', currentBranch);
-    console.log('Repo', github.context.repo);
+    console.log('Repo', github.context.repo.repo);
     const githubToken = core.getInput('github_token');
     const octokit = github.getOctokit(githubToken);
-    const allBranches = await octokit.rest.repos.listBranches({
-        owner: false,
-        repo: github.context.repo,
-    });
+    const allBranches = await octokit.rest.repos.listBranches(github.context.repo);
     console.log('allBranches', allBranches);
 };
 
