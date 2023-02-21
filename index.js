@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 const run = async () => {
+    console.log('Starting');
     const currentBranch = core.getInput('current_branch');
     console.log('Current Branch', currentBranch);
     console.log('Repo', github.context.repo);
